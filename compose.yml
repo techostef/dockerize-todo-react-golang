@@ -1,0 +1,20 @@
+services:
+  todo-server:
+    build:
+      context: .
+      dockerfile: ./docker/server/Dockerfile
+    ports:
+      - 4000:4000
+  todo-client:
+    build:
+      context: .
+      dockerfile: ./docker/client/Dockerfile
+    environment:
+      NODE_ENV: development
+      # for production
+      # NODE_ENV: production
+    ports:
+      - 3000:80
+
+volumes:
+  database:
